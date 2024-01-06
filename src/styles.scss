@@ -7,7 +7,16 @@ body {
     font-family: 'Roboto', sans-serif;
     font-weight: 400;
     font-size: 14px;
+    color: white !important;
+    background-color: #141414;
+}
+a {
+    text-decoration: none;
 }
 h1 {
     font-weight: 100;
+}
+.container {
+    margin: 0.5rem;
+    padding: 0.5rem;
 }

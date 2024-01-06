@@ -15,4 +15,14 @@ export class MoviesService {
             `${this.baseUrl}/movie/popular?api_key=${this.apiKey}`
         )
     }
+    getUpcomingMovies() {
+        return this.http.get<MoviesDto>(
+            `${this.baseUrl}/movie/upcoming?api_key=${this.apiKey}`
+        )
+    }
+    getTopRatedMovies() {
+        return this.http.get<MoviesDto>(
+            `${this.baseUrl}/movie/top_rated?api_key=${this.apiKey}`
+        )
+    }
 }
