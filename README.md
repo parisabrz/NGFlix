@@ -6,7 +6,7 @@ If you are in Iran, You have to turn on your v.p.n to see this correcty, cause o
 
 # Live
 
-ng-flix.vercel.app
+https://ng-flix.vercel.app/
 
 
 ## Development server
