@@ -4,6 +4,11 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 If you are in Iran, You have to turn on your v.p.n to see this correcty, cause of api server :/
 
+# Live
+
+ng-flix.vercel.app
+
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
