@@ -1,1 +1,13 @@
 /* You can add global styles to this file, and also import other style files */
+// @import url('/node_modules/modern-normalize/modern-normalize.css');
+// @import '/node_modules/sass-extras/index.scss';
+@import 'primeicons/primeicons.css';
+
+body {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+}
+h1 {
+    font-weight: 100;
+}
