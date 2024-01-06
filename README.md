@@ -1,6 +1,7 @@
 # NgFlix
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.0.9.
+If you are in Iran, You have to turn on your v.p.n to see this correcty, cause of api server :/
 
 ## Development server
 
