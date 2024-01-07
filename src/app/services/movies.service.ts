@@ -1,6 +1,9 @@
 import { Injectable } from '@angular/core'
 import { HttpClient } from '@angular/common/http'
-import { MoviesDto } from '../types/movie'
+import { Movie, MoviesDto } from '../types/movie'
+import { map } from 'rxjs'
+import { VideosDto } from '../types/video'
+import { ImagesDto } from '../types/images'
 @Injectable({
     providedIn: 'root',
 })
@@ -10,19 +13,31 @@ export class MoviesService {
 
     constructor(private http: HttpClient) {}
 
-    getPopularMovies() {
-        return this.http.get<MoviesDto>(
-            `${this.baseUrl}/movie/popular?api_key=${this.apiKey}`
+    getMoviesByType(type: string, count = 20) {
+        return this.http
+            .get<MoviesDto>(
+                `${this.baseUrl}/movie/${type}?api_key=${this.apiKey}`
+            )
+            .pipe(map((data) => data.results.slice(0, count)))
+    }
+    getMoviesById(id: string) {
+        return this.http.get<Movie>(
+            `${this.baseUrl}/movie/${id}?api_key=${this.apiKey}`
         )
     }
-    getUpcomingMovies() {
-        return this.http.get<MoviesDto>(
-            `${this.baseUrl}/movie/upcoming?api_key=${this.apiKey}`
-        )
+
+    getMovieVideos(id: string) {
+        return this.http
+            .get<VideosDto>(
+                `${this.baseUrl}/movie/${id}/videos?api_key=${this.apiKey}`
+            )
+            .pipe(map((data) => data.results))
     }
-    getTopRatedMovies() {
-        return this.http.get<MoviesDto>(
-            `${this.baseUrl}/movie/top_rated?api_key=${this.apiKey}`
-        )
+    getMovieImages(id: string) {
+        return this.http
+            .get<ImagesDto>(
+                `${this.baseUrl}/movie/${id}/images?api_key=${this.apiKey}`
+            )
+            .pipe(map((data) => data.backdrops))
     }
 }
