@@ -11,6 +11,8 @@ import { Video } from '../../types/video'
 import { VideoEmbedComponent } from '../../components/video-embed/video-embed.component'
 import { Image } from '../../types/images'
 import { ImageModule } from 'primeng/image'
+import { CarouselModule } from 'primeng/carousel'
+import { Actor } from '../../types/credits'
 @Component({
     selector: 'app-show-detail',
     standalone: true,
@@ -20,6 +22,7 @@ import { ImageModule } from 'primeng/image'
         TabViewModule,
         VideoEmbedComponent,
         ImageModule,
+        CarouselModule,
     ],
     templateUrl: './show-detail.component.html',
     styleUrl: './show-detail.component.scss',
@@ -30,6 +33,7 @@ export class ShowDetailComponent implements OnInit {
     imagesSizes = IMAGES_SIZES
     showVideos$: Observable<Video[]> | null = null
     showImages$: Observable<Image[]> | null = null
+    showCast$: Observable<Actor[]> | null = null
     constructor(
         private router: ActivatedRoute,
         private moviesService: MoviesService
@@ -43,5 +47,7 @@ export class ShowDetailComponent implements OnInit {
         this.showVideos$ = this.moviesService.getMovieVideos(this.showId)
 
         this.showImages$ = this.moviesService.getMovieImages(this.showId)
+
+        this.showCast$ = this.moviesService.getMovieCast(this.showId)
     }
 }

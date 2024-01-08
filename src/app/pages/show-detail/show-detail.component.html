@@ -2,7 +2,7 @@
     <app-slider [slides]="[show]" [isHeader]="true"></app-slider>
     <p-tabView>
         <p-tabPanel header="Overview">
-            <div class="grid gap-4">
+            <div class="grid gap-4 mb-4">
                 <div class="col-3">
                     <img
                         class="poster"
@@ -53,6 +53,37 @@
                     </div>
                 </div>
             </div>
+            <ng-container *ngIf="showCast$ | async as actors">
+                <p-carousel
+                    [value]="actors"
+                    [numVisible]="6"
+                    [numScroll]="3"
+                    [circular]="false"
+                >
+                    <ng-template let-actor pTemplate="item">
+                        <div class="actor">
+                            <img
+                                *ngIf="
+                                    actor.profile_path;
+                                    else defaultActorPhoto
+                                "
+                                [src]="imagesSizes.medium + actor.profile_path"
+                                alt=""
+                            />
+                            <div
+                                style="
+                                    margin-top: 20px;
+                                    font-size: 14px;
+                                    margin-bottom: 8px;
+                                "
+                            >
+                                {{ actor.character }}
+                            </div>
+                            <div>{{ actor.name }}</div>
+                        </div>
+                    </ng-template>
+                </p-carousel>
+            </ng-container>
         </p-tabPanel>
         <p-tabPanel header="Videos">
             <ng-container *ngIf="showVideos$ | async as showVideos">
@@ -81,3 +112,6 @@
         </p-tabPanel>
     </p-tabView>
 </ng-container>
+<ng-template #defaultActorPhoto>
+    <img style="height: 258px" src="/assets/actor.jpg" alt="actor no picture" />
+</ng-template>
